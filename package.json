@@ -1,0 +1,10 @@
+{
+  "name": "repository-service",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "koa": "^2.14.1"
+  }
+}
