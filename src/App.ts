@@ -1,10 +1,8 @@
 import Koa from "koa"
+import CatRouter from "./API"
 
 const app = new Koa();
-
-// response
-app.use(ctx => {
-  ctx.body = 'Hello Koa';
-});
+app.use(CatRouter.routes())
 
 app.listen(3000);
+console.log("App is running")
