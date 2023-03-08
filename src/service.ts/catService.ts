@@ -9,16 +9,16 @@ export default class CatService {
         this.catRepo = catRepo // here it got assigned in cat repo
     }
 
-    listAll() {
+    listAll(): Promise<Cat[]> {
         return this.catRepo.listAll()
     }
 
-    createAcat(cat: Cat): Cat {
-        return this.catRepo.createAcat(cat)
+    create(cat: Cat): Promise<Cat> {
+        return this.catRepo.create(cat)
     }
 
-    deleteAcat(name: String){
-        return this.catRepo.deleteAcat(name)
+    deleteByName(name: String): Promise<void>{
+        return this.catRepo.deleteByName(name)
     }
 
 
