@@ -13,8 +13,14 @@ export default class CatService {
         return this.catRepo.listAll()
     }
 
-    create(cat: Cat): Promise<Cat> {
-        return this.catRepo.create(cat)
+    async create(cat: Cat): Promise<Cat> {
+        const cats = await this.catRepo.listAll()
+        if(cats.find(c => c.name === cat.name)) {
+            throw new Error('Cat name already exists')
+        } else {
+            return this.catRepo.create(cat) 
+        }
+        
     }
 
     deleteByName(name: String): Promise<void>{
