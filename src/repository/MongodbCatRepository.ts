@@ -5,16 +5,13 @@ import Cat from "../models/cats";
 
 export default class MongodbCatRepository implements CatRepository {
     
-    private connectionUrl: string = 'mongodb://admin:password@localhost:27017'
-    private databaseName: string = "Mais-user"
-    private collectionName: string = "cats"
     private collection: Collection<Cat>
 
-    constructor() {
-        const client = new MongoClient(this.connectionUrl)
+    constructor(url: string, database: string) {
+        const client = new MongoClient(url)
         client.connect()
-        const db = client.db(this.databaseName)
-        this.collection = db.collection(this.collectionName)
+        const db = client.db(database)
+        this.collection = db.collection("cats")
     }
     
     listAll(): Promise<Cat[]> {

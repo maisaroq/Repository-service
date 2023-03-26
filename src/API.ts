@@ -8,7 +8,10 @@ import MongodbCatRepository from "./repository/MongodbCatRepository"
 
 
 const service: CatService = new CatService(
-    new MongodbCatRepository()
+    new MongodbCatRepository(
+        process.env.MONGO_URL || "",
+        process.env.MONGO_DATABASE_NAME || ""
+    )
 )
 
 const router = new Router({
